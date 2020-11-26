@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block body%}
+    <p>
+        Enter task number you want to delete
+    </p>
+    <form action="/del", method="POST">
+        <input type="text" required="required" name="dele" id="delId">
+        <input type="submit" id="submit" disabled>    
+    </form>
+
+    <h3 style="color: rgb(0, 247, 255);">
+        Valid numbers are 1 to {{ length }}
+    </h3>
+
+    <script>
+        document.querySelector('#delId').onsubmit = function() {
+            if ( Number(document.querySelector('#delId').value) === NaN)
+            {
+                alert("only number can be allowed.");
+                location.reload();
+            }
+            else
+            {
+                let num = Number(document.querySelector('#delId').value);
+                alert('Task' + num + 'is deleted');
+            }
+        }
+
+        document.querySelector('#delId').onkeyup = function()
+        {
+            if (document.querySelector('#delId').value === "")
+            {
+                document.querySelector('#submit').disabled = true;
+            }
+            else 
+            {
+                document.querySelector("#submit").disabled = false;
+            }
+        }
+        
+    </script>
+{% endblock %}

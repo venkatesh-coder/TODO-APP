@@ -1,0 +1,76 @@
+
+{% extends "layout.html" %}
+
+{% block styles %}
+    <style>
+        .task-list
+        {
+            text: center; 
+            border-color: black; 
+            border-width: 5px; 
+            border-style: solid; 
+            border-radius: 20px;
+            font-size: xx-large;
+            padding-left: 2%;
+        }
+
+        .link-align
+        {
+            text-align: center;
+            font-size: large;
+        }
+
+        .green
+        {
+            text-align: center;
+            color: green;
+            font-size: large;
+        }
+
+        .red
+        {
+            text-align: center;
+            color: red;
+        }
+
+        .heading
+        {
+            text-align: center;
+            font-size: 40px;
+        }
+    </style>
+    
+{% endblock %}
+
+
+{% block body %}
+    {% if length == 0 %}
+        <div style="text-align: center">
+            <h1 class="heading">
+                Tasks
+            </h1>
+            <h3 style="color: red; font-size: 30px">Currently No tasks available.</h3>
+            <a  class="green" href="/add">Create task</a>
+        </div>
+        
+    {% else %}  
+        <h1 class="heading">Tasks</h1>
+        <div class="task-list">
+            <ol>
+                {% for todo in todos %}
+                    <li>
+                        {{ todo }}
+                    </li>
+                {% endfor %}
+            </ol>     
+        </div>
+
+        <div class="link-align ">
+            <p>
+            </p>
+            <a class="green" href="/add">Create task</a>
+            <p></p>
+            <a class="red" href="/del">Delete a task</a>
+        </div>
+    {% endif %}    
+{% endblock %}

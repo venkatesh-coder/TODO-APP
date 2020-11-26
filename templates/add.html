@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block style %}
+    <style>
+        body
+        {
+            text-align: center;
+        }
+        .corners
+        {
+            outline-width: 20px;
+            outline-style: solid;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>
+        <form class="corners center" action="/add" method="POST">
+            <input type="text" name="task" id="task" placeholder="Task name"> 
+            <input type="submit" name="submit" id="submit" disabled>
+        </form>
+    </h1>
+
+    <script>
+        document.querySelector('#task').onkeyup = function()
+        {
+            if (document.querySelector('#task').value === "")
+            {
+                document.querySelector('#submit').disabled = true;
+            }
+            else 
+            {
+                document.querySelector("#submit").disabled = false;
+            }
+        }
+    </script>
+{% endblock %}

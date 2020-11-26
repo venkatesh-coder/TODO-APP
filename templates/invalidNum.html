@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1 style="color: red;">
+        Invalid Task Number {{ num }}
+    </h1>
+    <h1  style="color: red;">
+        Valid values are 1 to {{ length }}
+    </h1>
+    <h1>
+        <a href="/del">
+            Go Back.
+        </a>
+    </h1>
+    
+{% endblock %}
